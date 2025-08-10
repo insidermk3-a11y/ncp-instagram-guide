@@ -7,12 +7,12 @@
 
 :root {
     /* Cores principais - Instagram NCP */
-    --primary-blue: #1e3a8a;
-    --primary-gold: #f59e0b;
+    --primary-blue: #1e40af;
+    --primary-gold: #fbbf24;
     --light-blue: #3b82f6;
-    --light-gold: #fbbf24;
-    --dark-blue: #1e40af;
-    --dark-gold: #d97706;
+    --light-gold: #fcd34d;
+    --dark-blue: #1e3a8a;
+    --dark-gold: #f59e0b;
     
     /* Cores neutras */
     --white: #ffffff;
@@ -168,8 +168,10 @@ body {
 
 .checklist-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .checklist-item {
@@ -177,14 +179,26 @@ body {
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: var(--shadow-lg);
-    border: 2px solid transparent;
+    border: 3px solid var(--primary-gold);
     transition: var(--transition-normal);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.checklist-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
 }
 
 .checklist-item:hover {
-    border-color: var(--primary-gold);
-    transform: translateY(-5px);
+    border-color: var(--dark-gold);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
 }
 
@@ -593,9 +607,28 @@ body {
 
 .chart-container {
     background: var(--white);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: var(--shadow-md);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--primary-gold);
+    margin-top: 2rem;
+}
+
+.chart-container canvas {
+    max-height: 500px !important;
+    width: 100% !important;
+}
+
+.chart-container h3 {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Modals */
@@ -729,5 +762,75 @@ body {
 /* Scroll suave */
 html {
     scroll-behavior: smooth;
+}
+
+
+/* Link Jacobina */
+.jacobina-link {
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    border-bottom: 2px solid transparent;
+}
+
+.jacobina-link:hover {
+    color: var(--light-gold);
+    border-bottom-color: var(--light-gold);
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+
+/* Responsivo para checklist */
+@media (max-width: 768px) {
+    .checklist-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+}
+
+
+/* Validação de informações */
+.validation-info {
+    background: linear-gradient(135deg, #eff6ff 0%, #fef3c7 100%);
+    border: 2px solid var(--primary-gold);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.validation-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.validation-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.validation-link:hover {
+    color: var(--dark-blue);
+    border-bottom-color: var(--primary-blue);
+    text-shadow: 0 0 4px rgba(30, 64, 175, 0.3);
+}
+
+.chart-validation {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--gray-100);
+    text-align: center;
+}
+
+.chart-validation-text {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.5;
 }
 
